@@ -1,3 +1,7 @@
+# HMP Framework ⚙️
+
+![License](https://img.shields.io/badge/license-MIT-blue.svg)
+
 # Desenvolvido por: ROKO
 
 ### HMP Framework — Hybrid Messaging Protocol
