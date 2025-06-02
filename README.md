@@ -1,3 +1,5 @@
+# Desenvolvido por: ROKO
+
 ### HMP Framework — Hybrid Messaging Protocol
 
 **Versão:** 1.0  
