@@ -1,0 +1,8 @@
+__pycache__/
+*.pyc
+.env
+*.db
+logs/
+*.log
+__init__.py
+
