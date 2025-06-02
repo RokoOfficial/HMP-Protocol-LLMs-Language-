@@ -7,7 +7,7 @@
 ### HMP Framework — Hybrid Messaging Protocol
 
 **Versão:** 1.0  
-**Autor:** [Você]  
+**Autor:** ROKO  
 **Descrição:** Framework modular para agentes computacionais orientados por mensagens estruturadas.
 
 ---
