@@ -213,6 +213,16 @@ Você pode criar e integrar:
 
 ---
 
+## 🧪 Testes
+
+Para executar a suíte de testes utilize o **pytest**:
+
+```bash
+python -m pytest -q
+```
+
+---
+
 ## 🧾 Licença
 
 MIT — Desenvolvido por [Você]
