@@ -213,6 +213,17 @@ Você pode criar e integrar:
 
 ---
 
+## 🌐 Horizon Controller
+
+Script de exemplo utilizando o framework **AGNO** para orquestrar múltiplos agentes.
+Para iniciar uma sessão interativa:
+
+```bash
+python horizon_controller.py
+```
+
+---
+
 ## 🧾 Licença
 
 MIT — Desenvolvido por [Você]
