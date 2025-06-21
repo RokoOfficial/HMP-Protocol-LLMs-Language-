@@ -216,3 +216,7 @@ Você pode criar e integrar:
 ## 🧾 Licença
 
 MIT — Desenvolvido por [Você]
+
+Para detalhes sobre a linguagem de alto nível utilizada pelos agentes,
+consulte o arquivo `readmi.txt` que contém a **especificação do HMP
+Language v1.0**.
