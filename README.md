@@ -2,232 +2,120 @@
 
 ![License](https://img.shields.io/badge/license-MIT-blue.svg)
 
-# Desenvolvido por: ROKO
-
-### HMP Framework — Hybrid Messaging Protocol
-
-**Versão:** 1.0  
-**Autor:** ROKO  
-**Descrição:** Framework modular para agentes computacionais orientados por mensagens estruturadas.
+**Desenvolvido por: RokoOfficial**
 
 ---
 
-## 📘 Índice
+## HMP Framework — Hybrid Messaging Protocol
 
-- Visão Geral
-- Instalação
-- Conceitos-Chave
-- Mensagem HMP
-- Sistema de Tipos
-- Agentes
-- Registrando Agentes e Plugins
-- Middlewares
-- Execução de Mensagens
-- Execução em Lote
-- Exemplos
-- Expansões Avançadas
+O **HMP (Hybrid Messaging Protocol)** é um framework modular, leve e extensível para construir agentes computacionais orientados por mensagens estruturadas. Ele padroniza a comunicação, garante a segurança dos tipos e permite a execução auditável e isolada de tarefas.
+
+### Principais Características
+
+- **Mensagens Padronizadas**: Comunicação clara e consistente entre agentes.
+- **Sistema de Tipos Explícito**: Garante a segurança e a integridade dos dados.
+- **Arquitetura de Agentes**: Componentes registráveis que processam tipos específicos de mensagens.
+- **Execução Isolada e Auditável**: Cada mensagem é executada de forma segura e rastreável.
+- **Middlewares**: Interceptadores que modificam a execução para adicionar logging, segurança, etc.
+- **Extensibilidade**: Suporte a plugins para carregar agentes e funcionalidades de forma dinâmica.
 
 ---
 
-## 📌 Visão Geral
+## 📂 Estrutura do Projeto
 
-O HMP é um **framework leve e extensível** para executar mensagens entre agentes computacionais, com:
-- **Mensagens padronizadas**
-- **Tipos explícitos e seguros**
-- **Agentes registráveis**
-- **Execução isolada e auditável**
-- **Integração nativa com Shell, REST, ML, e muito mais**
+O projeto foi reestruturado para seguir as melhores práticas de desenvolvimento em Python, com uma organização clara de pacotes e módulos:
+
+```
+hmp/
+├── core/         # Núcleo do framework (runtime, message, typesystem)
+├── agents/       # Agentes (shell, rest, etc.)
+├── middleware/   # Middlewares
+└── plugins/      # Gerenciador de plugins
+
+examples/         # Exemplos de uso prático
+docs/             # Documentação detalhada
+tests/            # Testes unitários
+scripts/          # Scripts auxiliares
+```
 
 ---
 
 ## ⚙️ Instalação
 
+Para instalar o framework, clone o repositório e instale as dependências:
+
 ```bash
-git clone <seu-repo>
-cd HMP
-pip install -r requirements.txt
+git clone https://github.com/RokoOfficial/HMP-Protocol-LLMs-Language-.git
+cd HMP-Protocol-LLMs-Language-
+pip install -e .
+```
+
+Para desenvolvimento, instale as dependências de desenvolvimento:
+
+```bash
+pip install -e ".[dev]"
 ```
 
 ---
 
-## 🧩 Conceitos-Chave
+## 🚀 Uso Básico
 
-| Conceito       | Descrição |
-|----------------|-----------|
-| **HMPMessage** | Unidade básica de comunicação entre agentes |
-| **Agente**     | Componente que processa um tipo de mensagem |
-| **Middleware** | Intercepta e modifica execução (log, segurança, etc) |
-| **TypeSystem** | Padroniza os tipos em payload/contexto |
-| **PluginManager** | Carrega agentes/modificadores de forma dinâmica |
-
----
-
-## 📨 Mensagem HMP
-
-**Formato:**
-
-```text
-agente|payload1,payload2|chave1=valor1;chave2=valor2
-```
-
-**Exemplo:**
-```text
-shell|str:ls -lah|timeout=float:3.5;cwd=str:/home/user
-```
-
----
-
-## 🔢 Sistema de Tipos
-
-O `HMPTypeSystem` suporta:
-
-| Prefixo | Tipo        | Exemplo             |
-|---------|-------------|---------------------|
-| int     | Inteiro     | `int:42`            |
-| float   | Decimal     | `float:3.14`        |
-| str     | Texto       | `str:hello`         |
-| bool    | Booleano    | `bool:true`         |
-| json    | Objeto JSON | `json:{"k":"v"}`    |
-| bin     | Binário     | `bin:<base64>`      |
-| dt      | Data/hora   | `dt:2024-01-01T12`  |
-
----
-
-## 🤖 Agentes
-
-### ShellAgent
-Executa comandos locais de forma segura.
-
-```text
-shell|str:ls -lah|timeout=float:2.0
-```
-
-### RESTAgent
-Faz requisições HTTP.
-
-```text
-rest|str:GET,str:https://api.site.com|headers=json:{"Authorization":"Bearer xyz"}
-```
-
-### MLModelAgent
-Simula inferência de um modelo.
-
-```text
-mlmodel|json:[1,2,3]|model_path=str:/model/fake.pkl
-```
-
-### DataPipeAgent
-Simula fluxo de dados entre etapas.
-
-```text
-datapipe|str:entrada,str:transformador,str:saida
-```
-
----
-
-## 🧠 Registrando Agentes e Plugins
+O exemplo a seguir demonstra como registrar um agente e executar uma mensagem simples:
 
 ```python
-from HMP.agent_base import AgentRegistry
-from HMP.agents import ShellAgent
+# examples/basic_usage.py
 
+from hmp import HMPRuntime, AgentRegistry, ShellAgent
+
+# 1. Crie um registro de agentes
 registry = AgentRegistry()
+
+# 2. Registre os agentes desejados
 registry.register_agent("shell", ShellAgent())
-```
 
-### Com Plugin
-
-```python
-from HMP.plugin import PluginManager
-pm = PluginManager(registry)
-pm.load_plugin("plugins/meu_plugin.py")
-```
-
----
-
-## 🧱 Middlewares
-
-Exemplo de middleware de log:
-
-```python
-from HMP.agent_base import Middleware
-
-class Logger(Middleware):
-    def pre_execute(self, msg): ...
-    def post_execute(self, orig, res): ...
-```
-
-Registrar:
-```python
-registry.add_middleware(Logger())
-```
-
----
-
-## 🧪 Execução de Mensagens
-
-```python
-from HMP.runtime import HMPRuntime
-
+# 3. Crie o runtime do HMP
 runtime = HMPRuntime(registry)
-msg = "shell|str:whoami"
-resposta = runtime.execute(msg)
-print(resposta)
+
+# 4. Defina a mensagem a ser executada
+# Formato: "agente|payload|contexto"
+msg_str = "shell|str:echo Olá, Mundo!"
+
+# 5. Execute a mensagem
+response = runtime.execute(msg_str)
+
+print(f"Resposta do Agente: {response.payload[0]}")
+# Saída: Resposta do Agente: Olá, Mundo!
 ```
 
 ---
 
-## 📂 Execução em Lote
+## 📚 Documentação
 
-```python
-mensagens = [
-  "shell|str:ls",
-  "rest|str:GET,str:https://httpbin.org/get"
-]
-resultados = runtime.batch_execute(mensagens)
-```
+A documentação completa, incluindo a **especificação da linguagem HMP** e a arquitetura do framework, está disponível no diretório `docs/`.
+
+- **`docs/language_spec.md`**: Detalhes sobre a sintaxe e as palavras-chave da HMP Language.
+- **`docs/architecture.md`**: Visão geral da arquitetura do sistema (a ser criado).
 
 ---
 
-## 🧪 Exemplos
+## 🧪 Testes
 
-### Rodar comando e postar resposta em API
-
-```text
-shell|str:cat arquivo.txt
-rest|str:POST,str:https://meusite.com|data=json:<output_do_shell>
-```
-
----
-
-## 🚀 Expansões Avançadas
-
-Você pode criar e integrar:
-
-- `SQLAgent` → Executar queries em bancos reais
-- `LLMAgent` → Conectar a OpenAI ou LLM local
-- `GraphAgent` → Manipular grafos ou dados relacionais
-- `HistoryMiddleware` → Armazenar logs e replay
-- `REPL` → CLI interativa em terminal
-- `WebDashboard` → Interface gráfica com logs e execução
-
----
-
-## 🌐 Horizon Controller
-
-Script de exemplo utilizando o framework **AGNO** para orquestrar múltiplos agentes.
-Para iniciar uma sessão interativa:
+Para executar os testes unitários, utilize o `pytest`:
 
 ```bash
-python horizon_controller.py
+pytest
 ```
+
+---
+
+## 🤝 Contribuições
+
+Contribuições são bem-vindas! Sinta-se à vontade para abrir *issues* e *pull requests* para melhorias, correções de bugs ou novas funcionalidades.
 
 ---
 
 ## 🧾 Licença
 
-MIT — Desenvolvido por [Você]
+Este projeto está licenciado sob a **Licença MIT**. Consulte o arquivo `LICENSE` para mais detalhes.
 
-Para detalhes sobre a linguagem de alto nível utilizada pelos agentes,
-consulte o arquivo `readmi.txt` que contém a **especificação do HMP
-Language v1.0**.
+Copyright (c) 2025 RokoOfficial
