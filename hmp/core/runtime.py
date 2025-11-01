@@ -1,24 +1,13 @@
-"""
-HMP Runtime - Execution engine for HMP messages.
-
-Author: RokoOfficial
-License: MIT
-"""
-
 from typing import List
 from .message import HMPMessage
 from .typesystem import HMPTypeSystem
 from .exceptions import HMPError
 
-
 class HMPRuntime:
-    """Runtime engine for executing HMP messages through registered agents."""
     def __init__(self, registry):
-        """Initialize runtime with an agent registry."""
         self.registry = registry
 
     def execute(self, raw_hmp_string: str) -> HMPMessage:
-        """Execute a single HMP message string."""
         current_message = HMPMessage(raw_hmp_string)
         for mw in self.registry.middlewares:
             current_message = mw.pre_execute(current_message)
@@ -29,7 +18,6 @@ class HMPRuntime:
         return result
 
     def batch_execute(self, hmp_lines: List[str]) -> List[HMPMessage]:
-        """Execute multiple HMP messages in sequence."""
         results = []
         for line in hmp_lines:
             try:

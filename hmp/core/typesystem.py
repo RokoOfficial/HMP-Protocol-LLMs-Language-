@@ -1,19 +1,10 @@
-"""
-HMP Type System - Type encoding and decoding for HMP messages.
-
-Author: RokoOfficial
-License: MIT
-"""
-
 import json
 import base64
 from datetime import datetime
 from typing import Any
 from .exceptions import HMPError
 
-
 class HMPTypeSystem:
-    """Type system for encoding and decoding HMP message values."""
     TYPES = {
         'int': lambda v: int(v, 0),
         'float': float,
@@ -26,7 +17,6 @@ class HMPTypeSystem:
 
     @classmethod
     def parse(cls, item: str) -> Any:
-        """Parse a typed value string into a Python object."""
         if ':' not in item:
             try:
                 return int(item)
@@ -47,7 +37,6 @@ class HMPTypeSystem:
 
     @classmethod
     def encode(cls, val: Any) -> str:
-        """Encode a Python object into a typed value string."""
         if isinstance(val, bool):
             return f"bool:{str(val).lower()}"
         if isinstance(val, int):
@@ -63,15 +52,6 @@ class HMPTypeSystem:
         return f"json:{json.dumps(val, separators=(',', ':'))}"
 
 def tokenize_hmp(payload_str: str):
-    """
-    Tokenize a payload string, respecting JSON structures and quotes.
-    
-    Args:
-        payload_str: Raw payload string with comma-separated items
-        
-    Returns:
-        List of token strings
-    """
     tokens = []
     buffer = []
     depth = 0

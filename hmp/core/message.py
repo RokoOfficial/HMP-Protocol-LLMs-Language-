@@ -1,19 +1,10 @@
-"""
-HMP Message - Core message class for HMP protocol.
-
-Author: RokoOfficial
-License: MIT
-"""
-
 from dataclasses import dataclass, field
 from typing import Any, Dict, List
 from .exceptions import HMPError
 from .typesystem import HMPTypeSystem, tokenize_hmp
 
-
 @dataclass(frozen=True, slots=True)
 class HMPMessage:
-    """Immutable HMP message with agent, payload, and context."""
     raw: str
     agent: str = field(init=False)
     payload: List[Any] = field(init=False)
@@ -58,7 +49,6 @@ class HMPMessage:
         object.__setattr__(self, 'context', parsed_context)
 
     def encode(self) -> str:
-        """Encode the message back to HMP string format."""
         encoded_payload_items = [HMPTypeSystem.encode(v) for v in self.payload]
         payload_str = ",".join(encoded_payload_items)
 
@@ -73,5 +63,4 @@ class HMPMessage:
         return f"{encoded_agent_str}|{payload_str}|{context_str}"
 
     def __str__(self) -> str:
-        """String representation of the message."""
         return self.encode()

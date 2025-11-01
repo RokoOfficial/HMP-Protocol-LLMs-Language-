@@ -1,48 +1,72 @@
-# HMP Framework ⚙️
+# HMP/HVM: Uma Arquitetura para a Inteligência Artificial Cognitiva
+
+**Autor:** ROKO
 
 ![License](https://img.shields.io/badge/license-MIT-blue.svg)
 
-**Desenvolvido por: RokoOfficial**
+---
+
+## 1. A Quebra de Paradigma
+
+Este repositório contém a implementação e a documentação da **arquitetura HMP/HVM**, um sistema revolucionário que desafia o paradigma dominante da IA Correlacional (baseada em LLMs) e propõe um caminho mais eficiente e transparente para a Inteligência Artificial Geral (AGI) através da **IA Cognitiva**.
+
+Em vez de depender de poder computacional bruto e de modelos estatísticos opacos, esta arquitetura foca-se na **velocidade do raciocínio lógico e da simulação**.
+
+> Para uma análise aprofundada da nossa visão e da rutura com os métodos tradicionais, leia o nosso manifesto:
+> **[📄 A Quebra de Paradigma: Da IA Correlacional à IA Cognitiva](./docs/paradigm_shift.md)**
 
 ---
 
-## HMP Framework — Hybrid Messaging Protocol
+## 2. Componentes da Arquitetura
 
-O **HMP (Hybrid Messaging Protocol)** é um framework modular, leve e extensível para construir agentes computacionais orientados por mensagens estruturadas. Ele padroniza a comunicação, garante a segurança dos tipos e permite a execução auditável e isolada de tarefas.
+A arquitetura é composta por três pilares:
 
-### Principais Características
+1.  **HMP (Hybrid Messaging Protocol):** Uma linguagem de domínio específico (DSL) para o pensamento, o planeamento e a ação. É a "linguagem de montagem" da cognição.
+2.  **HVM (Hybrid Virtual Machine):** Um motor de execução (runtime) leve e ultrarrápido para a linguagem HMP, capaz de executar milhares de operações por segundo em hardware mínimo (incluindo ARM/Android).
+3.  **Roko:** A implementação de um agente de IA cognitiva que utiliza o HVM para executar a sua lógica interna, demonstrando capacidades de planeamento, simulação e interação com o mundo exterior.
 
-- **Mensagens Padronizadas**: Comunicação clara e consistente entre agentes.
-- **Sistema de Tipos Explícito**: Garante a segurança e a integridade dos dados.
-- **Arquitetura de Agentes**: Componentes registráveis que processam tipos específicos de mensagens.
-- **Execução Isolada e Auditável**: Cada mensagem é executada de forma segura e rastreável.
-- **Middlewares**: Interceptadores que modificam a execução para adicionar logging, segurança, etc.
-- **Extensibilidade**: Suporte a plugins para carregar agentes e funcionalidades de forma dinâmica.
+> A documentação técnica completa da arquitetura pode ser encontrada aqui:
+> **[⚙️ Arquitetura HMP/HVM: A Fundação para a IA Cognitiva](./docs/architecture.md)**
 
 ---
 
-## 📂 Estrutura do Projeto
+## 3. Benchmarks de Desempenho
 
-O projeto foi reestruturado para seguir as melhores práticas de desenvolvimento em Python, com uma organização clara de pacotes e módulos:
+A prova da superioridade desta arquitetura está no seu desempenho. Realizámos uma série de benchmarks que demonstram a sua eficiência em comparação com os LLMs tradicionais, especialmente em tarefas que exigem raciocínio e simulação.
+
+### Destaques
+
+| Métrica | Roko (HVM) | GPT-5 (Estimado) | Speedup |
+| :--- | :--- | :--- | :--- |
+| **Tarefa Complexa (10k ops)** | 10 segundos | 3600 segundos | **360x** |
+| **Uso de Memória (Idle)** | 2.5 MB | ~1.5 GB (mínimo) | **~600x** |
+| **Hardware** | ARM (Android) | Cluster de GPUs | - |
+
+![Comparação de Desempenho](./benchmarks/results/roko_vs_gpt5.png)
+
+> Para uma análise detalhada de todos os benchmarks, incluindo I/O, escalabilidade, simulação quântica e uso de memória, consulte o nosso relatório completo:
+> **[📊 Resumo de Benchmarks - Roko/HVM](./benchmarks/results/SUMMARY.md)**
+
+---
+
+## 4. Estrutura do Repositório
 
 ```
-hmp/
-├── core/         # Núcleo do framework (runtime, message, typesystem)
-├── agents/       # Agentes (shell, rest, etc.)
-├── middleware/   # Middlewares
-└── plugins/      # Gerenciador de plugins
-
-examples/         # Exemplos de uso prático
-docs/             # Documentação detalhada
-tests/            # Testes unitários
-scripts/          # Scripts auxiliares
+.
+├── hmp/              # Código fonte do framework HMP/HVM
+├── docs/             # Documentação técnica e manifestos
+├── benchmarks/       # Scripts e resultados de benchmarks
+├── examples/         # Exemplos de uso do HMP
+├── tests/            # Testes unitários
+├── LICENSE           # Licença MIT
+└── README.md         # Este ficheiro
 ```
 
 ---
 
-## ⚙️ Instalação
+## 5. Instalação e Uso
 
-Para instalar o framework, clone o repositório e instale as dependências:
+Para instalar o framework e as suas dependências:
 
 ```bash
 git clone https://github.com/RokoOfficial/HMP-Protocol-LLMs-Language-.git
@@ -50,72 +74,16 @@ cd HMP-Protocol-LLMs-Language-
 pip install -e .
 ```
 
-Para desenvolvimento, instale as dependências de desenvolvimento:
+Para executar um exemplo básico:
 
 ```bash
-pip install -e ".[dev]"
+python3 examples/basic_usage.py
 ```
 
 ---
 
-## 🚀 Uso Básico
-
-O exemplo a seguir demonstra como registrar um agente e executar uma mensagem simples:
-
-```python
-# examples/basic_usage.py
-
-from hmp import HMPRuntime, AgentRegistry, ShellAgent
-
-# 1. Crie um registro de agentes
-registry = AgentRegistry()
-
-# 2. Registre os agentes desejados
-registry.register_agent("shell", ShellAgent())
-
-# 3. Crie o runtime do HMP
-runtime = HMPRuntime(registry)
-
-# 4. Defina a mensagem a ser executada
-# Formato: "agente|payload|contexto"
-msg_str = "shell|str:echo Olá, Mundo!"
-
-# 5. Execute a mensagem
-response = runtime.execute(msg_str)
-
-print(f"Resposta do Agente: {response.payload[0]}")
-# Saída: Resposta do Agente: Olá, Mundo!
-```
-
----
-
-## 📚 Documentação
-
-A documentação completa, incluindo a **especificação da linguagem HMP** e a arquitetura do framework, está disponível no diretório `docs/`.
-
-- **`docs/language_spec.md`**: Detalhes sobre a sintaxe e as palavras-chave da HMP Language.
-- **`docs/architecture.md`**: Visão geral da arquitetura do sistema (a ser criado).
-
----
-
-## 🧪 Testes
-
-Para executar os testes unitários, utilize o `pytest`:
-
-```bash
-pytest
-```
-
----
-
-## 🤝 Contribuições
-
-Contribuições são bem-vindas! Sinta-se à vontade para abrir *issues* e *pull requests* para melhorias, correções de bugs ou novas funcionalidades.
-
----
-
-## 🧾 Licença
+## 6. Licença
 
 Este projeto está licenciado sob a **Licença MIT**. Consulte o arquivo `LICENSE` para mais detalhes.
 
-Copyright (c) 2025 RokoOfficial
+Copyright (c) 2025 ROKO
