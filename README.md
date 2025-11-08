@@ -21,8 +21,8 @@ Em vez de depender de poder computacional bruto e de modelos estatísticos opaco
 
 A arquitetura é composta por três pilares:
 
-1.  **HMP (Hybrid Messaging Protocol):** Uma linguagem de domínio específico (DSL) para o pensamento, o planeamento e a ação. É a "linguagem de montagem" da cognição.
-2.  **HVM (Hybrid Virtual Machine):** Um motor de execução (runtime) leve e ultrarrápido para a linguagem HMP, capaz de executar milhares de operações por segundo em hardware mínimo (incluindo ARM/Android).
+1.  **HMP (Hybrid Messaging Protocol):** Uma linguagem de domínio específico (DSL) para o pensamento, o planeamento e a ação. É a "linguagem de montagem" da cognição. **[Open Source - Apache 2.0]**
+2.  **HVM (Hybrid Virtual Machine):** Um motor de execução (runtime) leve e ultrarrápido para a linguagem HMP, capaz de executar milhares de operações por segundo em hardware mínimo (incluindo ARM/Android). **[Proprietário - Código Privado]**
 3.  **Roko:** A implementação de um agente de IA cognitiva que utiliza o HVM para executar a sua lógica interna, demonstrando capacidades de planeamento, simulação e interação com o mundo exterior.
 
 > A documentação técnica completa da arquitetura pode ser encontrada aqui:
@@ -84,6 +84,24 @@ python3 examples/basic_usage.py
 
 ## 6. Licença
 
-Este projeto está licenciado sob a **Licença Apache 2.0**. Consulte o arquivo `LICENSE` para mais detalhes.
+### Licenciamento Dual
+
+Este repositório contém dois componentes com licenças distintas:
+
+#### HMP (Hybrid Messaging Protocol) - Apache 2.0
+A **linguagem HMP** e toda a sua especificação, documentação, exemplos e implementações de referência estão licenciados sob a **Licença Apache 2.0**. Consulte o arquivo `LICENSE` para mais detalhes.
+
+- ✅ Uso comercial permitido
+- ✅ Modificação permitida
+- ✅ Distribuição permitida
+- ✅ Uso de patentes permitido
+
+#### HVM (Hybrid Virtual Machine) - Proprietário
+O **motor de execução HVM** é software proprietário e de código fechado. O código fonte do motor não está incluído neste repositório. A implementação de referência fornecida neste repositório serve apenas para fins educacionais e de demonstração da linguagem HMP.
+
+- ❌ Motor HVM não está disponível como open source
+- ℹ️ Para licenciamento comercial do HVM, contacte o autor
+
+---
 
 Copyright (c) 2025 ROKO
