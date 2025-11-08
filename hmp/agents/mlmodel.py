@@ -2,7 +2,7 @@
 MLModel Agent - Simulate machine learning model inference.
 
 Author: RokoOfficial
-License: MIT
+License: Apache 2.0
 """
 
 from typing import Any, Dict, List

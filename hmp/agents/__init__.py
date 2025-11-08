@@ -3,7 +3,7 @@ HMP Agents Module
 Provides base classes and concrete agent implementations.
 
 Author: RokoOfficial
-License: MIT
+License: Apache 2.0
 """
 
 from .base import BaseAgent, AgentRegistry

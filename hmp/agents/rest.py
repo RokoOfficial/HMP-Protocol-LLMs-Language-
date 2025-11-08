@@ -2,7 +2,7 @@
 REST Agent - Make HTTP requests.
 
 Author: RokoOfficial
-License: MIT
+License: Apache 2.0
 """
 
 import requests

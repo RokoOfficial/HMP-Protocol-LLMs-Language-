@@ -2,7 +2,7 @@
 
 **Autor:** ROKO
 
-![License](https://img.shields.io/badge/license-MIT-blue.svg)
+![License](https://img.shields.io/badge/license-Apache%202.0-blue.svg)
 
 ---
 
@@ -58,7 +58,7 @@ A prova da superioridade desta arquitetura está no seu desempenho. Realizámos 
 ├── benchmarks/       # Scripts e resultados de benchmarks
 ├── examples/         # Exemplos de uso do HMP
 ├── tests/            # Testes unitários
-├── LICENSE           # Licença MIT
+├── LICENSE           # Licença Apache 2.0
 └── README.md         # Este ficheiro
 ```
 
@@ -84,6 +84,6 @@ python3 examples/basic_usage.py
 
 ## 6. Licença
 
-Este projeto está licenciado sob a **Licença MIT**. Consulte o arquivo `LICENSE` para mais detalhes.
+Este projeto está licenciado sob a **Licença Apache 2.0**. Consulte o arquivo `LICENSE` para mais detalhes.
 
 Copyright (c) 2025 ROKO

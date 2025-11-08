@@ -2,7 +2,7 @@
 Setup script for HMP Framework
 
 Author: RokoOfficial
-License: MIT
+License: Apache 2.0
 """
 
 from setuptools import setup, find_packages
@@ -23,7 +23,7 @@ setup(
         "Development Status :: 4 - Beta",
         "Intended Audience :: Developers",
         "Topic :: Software Development :: Libraries :: Application Frameworks",
-        "License :: OSI Approved :: MIT License",
+        "License :: OSI Approved :: Apache Software License",
         "Programming Language :: Python :: 3",
         "Programming Language :: Python :: 3.8",
         "Programming Language :: Python :: 3.9",

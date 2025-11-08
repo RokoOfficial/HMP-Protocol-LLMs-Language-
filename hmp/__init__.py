@@ -5,7 +5,7 @@ A modular framework for computational agents oriented by structured messages.
 
 Author: RokoOfficial
 Version: 1.0
-License: MIT
+License: Apache 2.0
 """
 
 from .core import HMPMessage, HMPRuntime, HMPTypeSystem, HMPError
@@ -15,7 +15,7 @@ from .plugins import PluginManager
 
 __version__ = '1.0.0'
 __author__ = 'RokoOfficial'
-__license__ = 'MIT'
+__license__ = 'Apache 2.0'
 
 __all__ = [
     'HMPMessage',

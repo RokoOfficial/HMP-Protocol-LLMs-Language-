@@ -2,7 +2,7 @@
 Base classes for HMP agents and registry.
 
 Author: RokoOfficial
-License: MIT
+License: Apache 2.0
 """
 
 from abc import ABC, abstractmethod

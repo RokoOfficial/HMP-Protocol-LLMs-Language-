@@ -3,7 +3,7 @@ HMP Plugins Module
 Plugin management for dynamic agent loading.
 
 Author: RokoOfficial
-License: MIT
+License: Apache 2.0
 """
 
 from .manager import PluginManager

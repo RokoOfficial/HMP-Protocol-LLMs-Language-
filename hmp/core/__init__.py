@@ -3,7 +3,7 @@ HMP Core Module
 Core components of the Hybrid Messaging Protocol framework.
 
 Author: RokoOfficial
-License: MIT
+License: Apache 2.0
 """
 
 from .message import HMPMessage

@@ -2,7 +2,7 @@
 DataPipe Agent - Simulate data pipeline processing.
 
 Author: RokoOfficial
-License: MIT
+License: Apache 2.0
 """
 
 from typing import Any, Dict, List
